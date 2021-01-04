@@ -21,7 +21,7 @@
     }
   ],
   "main": "bin/console",
-  "output": "cli.phar",
+  "output": "cressinator-cli.phar",
   "compression": "GZ",
   "exclude-dev-files": false,
   "exclude-composer-files": false

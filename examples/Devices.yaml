@@ -1,0 +1,41 @@
+sensors:
+    -
+      name: 'In. Temperature'
+      type: 'Temperature'
+      serial: 'PT100MK1-170AA5'
+    -
+      name: 'Out. Temperature'
+      type: 'Temperature'
+      serial: 'YCO2MK02-166B2E'
+    -
+      name: 'Light'
+      type: 'Light'
+      serial: 'LIGHTMK3-F95ED'
+    -
+      name: 'CO2'
+      type: 'CO2'
+      serial: 'YCO2MK02-166B2E'
+    -
+      name: 'Humidity'
+      type: 'Humidity'
+      serial: 'YCO2MK02-166B2E'
+    -
+      name: 'Pressure'
+      type: 'Pressure'
+      serial: 'YCO2MK02-166B2E'
+
+cameras:
+    -
+      name: 'Normal'
+      extension: 'jpg'
+      command:
+          - 'fswebcam'
+          - '--no-banner'
+          - '--skip'
+          - '5'
+          - '--resolution'
+          - '1280x720'
+          - '--jpeg'
+          - '80'
+          - '--palette'
+          - 'YUYV'

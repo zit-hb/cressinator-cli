@@ -1,14 +1,11 @@
-Symfony-Console
+cressinator-cli
 ===============
 
-A template for a Symfony console application that uses dependency injection - because I need it quite often!
-
-**Version**: Symfony 5.0
+A CLI tool to send Yoctopuce sensor data and camera images to the Cressinator server.
 
 # Installation
 
-    git clone https://github.com/zit-hb/symfony-console.git
-    composer update
+    composer install
     box build
 
 # Dependencies
@@ -16,12 +13,11 @@ A template for a Symfony console application that uses dependency injection - be
  * https://github.com/composer/composer
  * https://github.com/humbug/box
 
-# Resources
+# Example
 
-Check out the official Symfony documentation for information on how to write a command:
-
- * https://symfony.com/doc/current/console.html
- * https://symfony.com/doc/current/console/input.html
- * https://symfony.com/doc/current/console/coloring.html
- * https://symfony.com/doc/current/console/style.html
- * https://symfony.com/doc/current/console/verbosity.html
+    ./cressinator-cli.phar cressinator:store \
+      --group 1 \
+      --host http://foo:bar@192.168.0.23:4444 \
+      --cressinator https://cressinator.example.org \
+      --token d69c8d58118bbe78dec56bc0b638ec344042ec011cdc75d0e9d11de7f765fb1f \
+      --file examples/Devices.yaml
