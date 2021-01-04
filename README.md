@@ -3,18 +3,19 @@ cressinator-cli
 
 A CLI tool to send Yoctopuce sensor data and camera images to the Cressinator server.
 
-# Installation
-
-    composer install
-    box build
-
 ## Requirements
 
   * [Composer](https://getcomposer.org/)
   * [Box](https://github.com/humbug/box)
   * PHP >= 7.2
 
-# Example
+## Installation
+
+    composer install
+    php bin/console
+    box build
+
+## Examples
 
     ./cressinator-cli.phar cressinator:store \
       --group 1 \
