@@ -8,10 +8,11 @@ A CLI tool to send Yoctopuce sensor data and camera images to the Cressinator se
     composer install
     box build
 
-# Dependencies
+## Requirements
 
- * https://github.com/composer/composer
- * https://github.com/humbug/box
+  * [Composer](https://getcomposer.org/)
+  * [Box](https://github.com/humbug/box)
+  * PHP >= 7.2
 
 # Example
 
