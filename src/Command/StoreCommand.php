@@ -49,33 +49,38 @@ class StoreCommand extends Command
     {
         $this
             ->setName('cressinator:store')
+            ->setDescription('Sends sensor data and camera images to Cressinator')
+            ->setHelp('This command allows you to send Yoctopuce sensor data and camera images to a Cressinator server...')
             ->addOption(
                 'group',
                 'g',
-                InputOption::VALUE_REQUIRED
+                InputOption::VALUE_REQUIRED,
+                'The group id'
             )
             ->addOption(
-                'host',
-                'H',
+                'yoctopuce',
+                'Y',
                 InputOption::VALUE_REQUIRED,
-                '',
+                'The Yoctopuce address',
                 'http://127.0.0.1:4444'
             )
             ->addOption(
                 'cressinator',
                 'C',
                 InputOption::VALUE_REQUIRED,
-                ''
+                'The Cressinator address'
             )
             ->addOption(
                 'token',
                 'T',
-                InputOption::VALUE_REQUIRED
+                InputOption::VALUE_REQUIRED,
+                'The Cressinator API token'
             )
             ->addOption(
                 'file',
                 'F',
-                InputOption::VALUE_REQUIRED
+                InputOption::VALUE_REQUIRED,
+                'The devices file'
             )
         ;
     }
@@ -98,7 +103,7 @@ class StoreCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $this->optionService->checkForRequiredOptions($input, ['host', 'group', 'cressinator', 'token', 'file']);
+            $this->optionService->checkForRequiredOptions($input, ['group', 'yoctopuce', 'cressinator', 'token', 'file']);
         } catch (OptionNotFoundException $exception) {
             $options = $exception->getMissingOptions();
             $output->writeln('<error>Error:</error> Missing value(s) for <info>' . implode(', ', $options) . '</info>');
@@ -142,7 +147,7 @@ class StoreCommand extends Command
      */
     private function handleSensors(InputInterface $input, OutputInterface $output, array $sensors): void
     {
-        YAPI::RegisterHub($input->getOption('host'));
+        YAPI::RegisterHub($input->getOption('yoctopuce'));
 
         foreach ($sensors as $sensor) {
             if (empty($sensor['name']) || empty($sensor['type']) || empty($sensor['serial'])) {
