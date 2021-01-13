@@ -167,11 +167,6 @@ class StoreCommand extends Command
             $this->cressinatorService->addMeasurement($sourceId, $value);
         }
 
-        // HACK: reboot to solve the freeze problem
-        $network = \YNetwork::FirstNetwork();
-        $module = $network->get_module();
-        $module->reboot(1);
-
         YAPI::FreeAPI();
     }
 
